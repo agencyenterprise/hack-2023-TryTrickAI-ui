@@ -25,7 +25,7 @@ export default function CreatePuzzle() {
     setLoading(true)
     await TrickAiService.submitClue({
       clue_text: clueRef.current.value,
-      instruction_id: instructions.id
+      instruction_id: instructions.instruction_id
     }).catch(setError)
     .finally(() => setLoading(false))
 

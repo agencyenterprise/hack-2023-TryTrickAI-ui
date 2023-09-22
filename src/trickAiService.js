@@ -5,7 +5,7 @@ export const TrickAiService = {
     return fetch(`${BASE_URL}/get-instructions`)
       .then(res => res.json())
   },
-  submitClue(clue_text, instruction_id) {
+  submitClue({ clue_text, instruction_id }) {
     return fetch(`${BASE_URL}/store-clue`, {
       method: 'POST',
       headers: {
