@@ -1,13 +1,14 @@
 import Link from "next/link"
+import { twMerge } from "tailwind-merge"
 
-export function Button({variant = 'primary', href, onClick, children}) {
+export function Button({variant = 'primary', href, onClick, className, children }) {
   if (href) {
     return (
       <Link
         href={href}
-        className={`py-2 px-6 drop-shadow rounded-sm uppercase text-white font-roboto ${
-          variant === 'primary' ? 'bg-[#1890FF] text-white' : 'border border-neutral-500'
-        }`}
+        className={twMerge(`py-2 px-6 drop-shadow rounded uppercase text-white font-roboto shadow-sm font-bold ${
+          variant === 'primary' ? 'bg-primary-button text-white' : 'border border-white'
+        }`, className)}
       >
         {children}
       </Link>
@@ -16,9 +17,9 @@ export function Button({variant = 'primary', href, onClick, children}) {
 
   return (
     <button
-      className={`py-2 px-6 drop-shadow rounded-sm uppercase font-roboto text-white ${
-        variant === 'primary' ? 'bg-[#1890FF] text-white' : 'border border-neutral-500'
-      }`}
+      className={twMerge(`py-2 px-6 drop-shadow rounded uppercase font-roboto text-white shadow-sm font-bold ${
+        variant === 'primary' ? 'bg-primary-button text-white' : 'border border-white'
+      }`, className)}
       onClick={onClick}
     >
       {children}

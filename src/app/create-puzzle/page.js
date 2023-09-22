@@ -7,6 +7,7 @@ import { Title } from "@/components/Title"
 import { TrickAiService } from "@/trickAiService"
 import useEffectOnce from "@/hooks/effectOnce"
 import { Loading } from "@/components/Loading"
+import { Divider } from "@/components/Divider"
 
 export default function CreatePuzzle() {
   const [instructions, setInstructions] = useState(null)
@@ -22,6 +23,8 @@ export default function CreatePuzzle() {
   })
 
   const submit = async () => {
+    if (!clueRef.current.value.trim()) return
+
     setLoading(true)
     const result = await TrickAiService.submitClue({
       clue_text: clueRef.current.value,
@@ -48,22 +51,31 @@ export default function CreatePuzzle() {
       <Header />
       <section className="max-w-2xl space-y-6 text-black">
         <div className="bg-zinc-100 rounded-lg space-y-8 text-left p-8">
-          <h3 className="text-2xl font-medium mb-4 uppercase">Context</h3>
-          <p className="font-medium" dangerouslySetInnerHTML={{ __html: normalizeInstruction(instructions) }} />
+          <Divider color="bg-[#292929]" />
+          <div className="space-y-4">
+            <h3 className="text-2xl font-medium uppercase">Objective</h3>
+            <p className="font-medium" dangerouslySetInnerHTML={{ __html: normalizeInstruction(instructions) }} />
+            <h3 className="font-medium uppercase">Your code:</h3>
+            <p className="font-medium">{instructions.secret}</p>
+          </div>
+          <Divider color="bg-[#292929]" />
         </div>
-        <div className="bg-zinc-200 rounded-lg p-8 space-y-4">
+        <div className="flex flex-col bg-zinc-200 rounded-lg p-8 space-y-4">
           <h2 className="text-2xl font-medium uppercase">Create your clue</h2>
+          <p className="font-light">Describe your code in way that a human can understand and a machine cannot.</p>
           <textarea
             ref={clueRef}
             className="py-1.5 px-3 font-roboto rounded-sm flex-grow text-sm w-full border border-neutral-50"
             onKeyUp={(e) => {
-              if (e.key === 'Enter') {
+              e.preventDefault()
+              if(e.target.value.trim() === '') return
+              if (e.key === 'Enter' && !e.shiftKey) {
                 submit()
               }
             }}
             placeholder="Autosize height based on content lines"
           />
-          <Button onClick={submit}>Submit</Button>
+          <Button className="self-end" onClick={submit}>Submit</Button>
         </div>
       </section>
     </>
@@ -71,7 +83,7 @@ export default function CreatePuzzle() {
 }
 
 function normalizeInstruction({ instruction, secret }) {
-  return instruction.replace(/(?:\r\n|\r|\n)/g, '<br /><br />').replace(secret, `<b>${secret}</b>`);
+  return instruction.replace(/(?:\r\n|\r|\n)/g, '<br />').replace(secret, `<b>${secret}</b>`);
 }
 
 function Header() {
