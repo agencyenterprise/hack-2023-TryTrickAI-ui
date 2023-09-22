@@ -11,12 +11,12 @@ module.exports = {
         kumar: ['Kumar One', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+      dropShadow: {
+        white: 'drop-shadow(0 1px 2px rgb(256 256 256 / 0.1)) drop-shadow(0 1px 1px rgb(256 256 256 / 0.06));',
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

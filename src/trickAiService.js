@@ -13,18 +13,20 @@ export const TrickAiService = {
       },
       body: JSON.stringify({ clue_text, instruction_id })
     })
+    .then(res => res.json())
   },
   getClue() {
     return fetch(`${BASE_URL}/get-clue`)
-    .then(res => res.json())
+      .then(res => res.json())
   },
-  submitGuess(answer) {
-    return fetch(`${BASE_URL}/submit-answer`, {
+  submitGuess({ guess_text, clue_id }) {
+    return fetch(`${BASE_URL}/submit-guess`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ answer })
+      body: JSON.stringify({ guess_text, clue_id })
     })
+    .then(res => res.json())
   },
 }

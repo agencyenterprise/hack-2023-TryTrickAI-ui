@@ -2,15 +2,18 @@
 import { useRef, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
-import { Button } from "@/components/button"
-import { Title } from "@/components/title"
+import { Button } from "@/components/Button"
+import { Title } from "@/components/Title"
 import { TrickAiService } from "@/trickAiService"
 import useEffectOnce from "@/hooks/effectOnce"
+import { Loading } from "@/components/Loading"
 
 export default function CreatePuzzle() {
   const [instructions, setInstructions] = useState(null)
-
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
   const clueRef = useRef(null)
+
   const router = useRouter()
 
   useEffectOnce(() => {
@@ -19,19 +22,22 @@ export default function CreatePuzzle() {
   })
 
   const submitClue = async () => {
+    setLoading(true)
     await TrickAiService.submitClue({
       clue_text: clueRef.current.value,
       instruction_id: instructions.id
-    })
+    }).catch(setError)
+    .finally(() => setLoading(false))
+
     router.push('/')
   }
 
-  if (!instructions) {
+  if (!instructions || loading || error) {
     return (
       <>
         <Header />
-        <div className="text-center space-y-6">
-          <p className="text-2xl font-medium uppercase">Loading...</p>
+        <div className="text-center space-y-6 mx-auto">
+          { error ? <p className="text-2xl font-medium uppercase">Error: {error}</p> : <Loading /> }
         </div>
       </>
     )
@@ -51,7 +57,6 @@ export default function CreatePuzzle() {
             ref={clueRef}
             className="py-1.5 px-3 font-roboto rounded-sm flex-grow text-sm w-full border border-neutral-50"
             placeholder="Autosize height based on content lines"
-            onChange={e => setClue(e.target.value)}
           />
           <Button onClick={() => submitClue()}>Submit</Button>
         </div>
