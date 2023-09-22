@@ -21,15 +21,15 @@ export default function CreatePuzzle() {
       .then((instructions) => setInstructions(instructions))
   })
 
-  const submitClue = async () => {
+  const submit = async () => {
     setLoading(true)
-    await TrickAiService.submitClue({
+    const result = await TrickAiService.submitClue({
       clue_text: clueRef.current.value,
       instruction_id: instructions.instruction_id
     }).catch(setError)
     .finally(() => setLoading(false))
 
-    router.push('/')
+    router.push(`/result/${instructions.instruction_id}/${result.llm_result ? 'failure' : 'success'}`)
   }
 
   if (!instructions || loading || error) {
@@ -56,9 +56,14 @@ export default function CreatePuzzle() {
           <textarea
             ref={clueRef}
             className="py-1.5 px-3 font-roboto rounded-sm flex-grow text-sm w-full border border-neutral-50"
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                submit()
+              }
+            }}
             placeholder="Autosize height based on content lines"
           />
-          <Button onClick={() => submitClue()}>Submit</Button>
+          <Button onClick={submit}>Submit</Button>
         </div>
       </section>
     </>

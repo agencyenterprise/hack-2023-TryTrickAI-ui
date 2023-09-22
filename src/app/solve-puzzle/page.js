@@ -26,7 +26,7 @@ export default function SolvePuzzle() {
       .finally(() => setLoading(false))
   })
 
-  const submitGuess = async () => {
+  const submit = async () => {
     if (!guessRef.current.value) return
 
     setAttempts(attempts + 1)
@@ -73,15 +73,10 @@ export default function SolvePuzzle() {
               ref={guessRef}
               autoFocus
               className="rounded-sm py-2 px-3 font-roboto flex-grow"
-              onKeyUp={(e) => {
-                if (e.key === 'Enter') {
-                  submitGuess()
-                }
-              }}
               type="text"
               placeholder="Guess"
             />
-            <Button onClick={submitGuess}>Submit</Button>
+            <Button onClick={submit}>Submit</Button>
           </div>
           {success === false && <p className="font-roboto">Your answer is wrong! Try again</p>}
         </div>
