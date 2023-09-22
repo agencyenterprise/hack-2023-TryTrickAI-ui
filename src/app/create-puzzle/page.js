@@ -32,7 +32,7 @@ export default function CreatePuzzle() {
     }).catch(setError)
     .finally(() => setLoading(false))
 
-    router.push(`/result/${instructions.instruction_id}/${result.llm_result ? 'failure' : 'success'}`)
+    router.push(`/result/create/${instructions.instruction_id}/${result.llm_result ? 'failure' : 'success'}`)
   }
 
   if (!instructions || loading || error) {

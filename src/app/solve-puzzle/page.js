@@ -36,8 +36,12 @@ export default function SolvePuzzle() {
       clue_id: clue.id
     })
 
-    if (attempts >= 3 || result.success) {
-      router.push(`/result/${clue.id}/${result.success ? 'success' : 'failure'}?percentage=${result.human_pct_correct}`)
+    if (attempts >= 2 || result.success) {
+      let url = `/result/solve/${clue.id}/${result.success ? 'success' : 'failure'}`
+      if (result.human_pct_correct) {
+        url += `?percentage=${result.human_pct_correct}`
+      }
+      router.push(url)
     }
     setSuccess(result.success)
   }
@@ -72,6 +76,13 @@ export default function SolvePuzzle() {
             <input
               ref={guessRef}
               autoFocus
+              onKeyUp={(e) => {
+                e.preventDefault()
+                if(e.target.value.trim() === '') return
+                if (e.key === 'Enter') {
+                  submit()
+                }
+              }}
               className="rounded-sm py-2 px-3 font-roboto flex-grow"
               type="text"
               placeholder="Guess"

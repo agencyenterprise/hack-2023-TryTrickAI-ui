@@ -3,18 +3,25 @@ import { Divider } from "@/components/Divider";
 
 export default function Result({ params, searchParams }) {
   const { slug } = params
-  const [clueId, result] = slug
+  const [place, clueId, result] = slug
   const { percentage } = searchParams
 
   const isSuccess = result === 'success'
 
+  let image = '/failure.svg'
+  if (isSuccess) {
+    image = percentage ? '/success-solve.svg' : '/success-create.svg'
+  } else {
+    image = place === 'create' ? '/failure-create.svg' : '/failure-solve.svg'
+  }
+
   return (
     <>
-      <img src={isSuccess ? '/success.svg' : '/failure.svg'} />
+      <img src={image} />
       <div className="text-center max-w-[400px] mx-auto space-y-12 uppercase py-20">
         <Divider />
         <div className="flex flex-col space-y-4 items-center text-2xl">
-          { isSuccess ? <SuccessMessage percentage={percentage} /> : <FailureMessage /> }
+          { isSuccess ? <SuccessMessage percentage={percentage} /> : <FailureMessage place={place} /> }
         </div>
         <Divider />
       </div>
@@ -22,7 +29,7 @@ export default function Result({ params, searchParams }) {
         <Button href="/solve-puzzle">{isSuccess ? 'try a new puzzle' : 'try again'}</Button>
         {
           isSuccess && <Button href="/create-puzzle" variant="secundary">
-            { 'try a new puzzle' }
+            create a puzzle
           </Button>
         }
       </div>
