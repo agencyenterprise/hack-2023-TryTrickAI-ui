@@ -19,7 +19,15 @@ module.exports = {
       },
       dropShadow: {
         white: 'drop-shadow(0 1px 2px rgb(256 256 256 / 0.1)) drop-shadow(0 1px 1px rgb(256 256 256 / 0.06));',
-      }
+      },
+      animation: {
+        'spin-backwards': 'spin-backwards 1s linear infinite',
+      },
+      keyframes: {
+        'spin-backwards': {
+          '100%': { transform: 'rotate(-360deg)' },
+        }
+      },
     },
   },
   plugins: [
