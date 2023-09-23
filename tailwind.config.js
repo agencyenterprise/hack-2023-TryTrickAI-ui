@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         kumar: ['Kumar One', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
+        albert: ['Albert Sans', 'sans-serif'],
       },
       backgroundImage: {
         'primary-button': 'radial-gradient(151.38% 103.34% at 32.05% 64.79%, #323232 0%, #000 100%)',

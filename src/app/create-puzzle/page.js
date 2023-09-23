@@ -26,13 +26,20 @@ export default function CreatePuzzle() {
     if (!clueRef.current.value.trim()) return
 
     setLoading(true)
-    const result = await TrickAiService.submitClue({
-      clue_text: clueRef.current.value,
-      instruction_id: instructions.instruction_id
-    }).catch(setError)
-    .finally(() => setLoading(false))
+    try {
+      const result = await TrickAiService.submitClue({
+        clue_text: clueRef.current.value,
+        instruction_id: instructions.instruction_id
+      })
 
-    router.push(`/result/create/${instructions.instruction_id}/${result.llm_result ? 'failure' : 'success'}`)
+      if (result.llm_result !== undefined) {
+        router.push(`/result/create/${instructions.instruction_id}/${result.llm_result ? 'failure' : 'success'}`)
+      }
+    } catch (error) {
+      console.log(error)
+      setError(error)
+    }
+    setLoading(false)
   }
 
   if (!instructions || loading || error) {

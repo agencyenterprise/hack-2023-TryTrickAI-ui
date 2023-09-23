@@ -1,35 +1,29 @@
 import { Button } from "@/components/Button";
 import { Divider } from "@/components/Divider";
 
-export default function Result({ params, searchParams }) {
+export default function SolveResult({ params, searchParams }) {
   const { slug } = params
-  const [place, clueId, result] = slug
+  const [clueId, result] = slug
   const { percentage } = searchParams
 
   const isSuccess = result === 'success'
-
-  let image = '/failure.svg'
-  if (isSuccess) {
-    image = percentage ? '/success-solve.svg' : '/success-create.svg'
-  } else {
-    image = place === 'create' ? '/failure-create.svg' : '/failure-solve.svg'
-  }
+  const image = isSuccess ? '/success-solve.svg' : '/failure-solve.svg'
 
   return (
     <>
       <img src={image} />
       <div className="text-center max-w-[400px] mx-auto space-y-12 uppercase py-20">
         <Divider />
-        <div className="flex flex-col space-y-4 items-center text-2xl">
-          { isSuccess ? <SuccessMessage percentage={percentage} /> : <FailureMessage place={place} /> }
+        <div className="flex flex-col space-y-4 items-center text-2xl font-albert">
+          { isSuccess ? <SuccessMessage percentage={percentage} /> : <FailureMessage /> }
         </div>
         <Divider />
       </div>
       <div className='flex flex-col md:flex-row gap-4 mx-auto mt-20'>
         <Button href="/solve-puzzle">{isSuccess ? 'try a new puzzle' : 'try again'}</Button>
         {
-          isSuccess && <Button href="/create-puzzle" variant="secundary">
-            create a puzzle
+          isSuccess && <Button href={isSuccess ? "/create-puzzle" : '/solve-puzzle'} variant="secundary">
+            { isSuccess ? 'create a puzzle' : 'try a new puzzle' }
           </Button>
         }
       </div>
@@ -39,24 +33,21 @@ export default function Result({ params, searchParams }) {
 
 function SuccessMessage({ percentage }) {
   return (
-      percentage
-      ? (
-          <>
-            <span className="block text-6xl -mb-2">{Math.round(percentage * 100)}%</span><br /> of your fellow humans solved this puzzle
-          </>
-        )
-      : (
-        <>
-          <p className="text-2xl uppercase font-bold">you stumped the machines!</p>
-          <p className="font-medium text-base normal-case">We’ll show this puzzle to other humans, to see if they can solve it. Check the leaderboard in a little while to see how well they do.</p>
-          <UserGroup />
-        </>
-      )
+    <>
+      <p className="font-bold">
+        <span className="font-black block text-6xl -mb-2">
+          {Math.round((percentage || 0) * 100)}%</span>
+          <br /> of your fellow humans solved this puzzle
+      </p>
+    </>
   )
 }
 
 function FailureMessage() {
-  return <p>Get ahold of yourself and determine your next move</p>
+  return (
+    <p>Get ahold of yourself and determine your next move</p>
+    // TODO: number of attempts
+  )
 }
 
 function UserGroup() {

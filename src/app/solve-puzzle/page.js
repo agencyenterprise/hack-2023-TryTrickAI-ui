@@ -89,7 +89,6 @@ export default function SolvePuzzle() {
             />
             <Button onClick={submit}>Submit</Button>
           </div>
-          {success === false && <p className="font-roboto">Your answer is wrong! Try again</p>}
         </div>
       </section>
     </>
