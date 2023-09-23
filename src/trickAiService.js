@@ -13,7 +13,7 @@ async function fetchWrapper(url, options) {
 
 export const TrickAiService = {
   getInstructions() {
-    return fetchWrapper(`${BASE_URL}/get-instructions`)
+    return fetchWrapper(`${BASE_URL}/get-instructions`, { cache: 'no-store' })
   },
   submitClue({ clue_text, instruction_id }) {
     return fetchWrapper(`${BASE_URL}/store-clue`, {
@@ -25,7 +25,7 @@ export const TrickAiService = {
     })
   },
   getClue() {
-    return fetchWrapper(`${BASE_URL}/get-clue`)
+    return fetchWrapper(`${BASE_URL}/get-clue`, { cache: 'no-store' })
   },
   submitGuess({ guess_text, clue_id }) {
     return fetchWrapper(`${BASE_URL}/submit-guess`, {
@@ -37,7 +37,7 @@ export const TrickAiService = {
     })
   },
   getLeaderboard() {
-    return fetchWrapper(`${BASE_URL}/load-results`)
+    return fetchWrapper(`${BASE_URL}/load-results`, { cache: 'no-store' })
   },
   getOurData({ name, email, interest }) {
     return fetchWrapper(`${BASE_URL}/store-researcher-info`, {
