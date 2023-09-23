@@ -8,42 +8,56 @@ import { Title } from '@/components/Title'
 import { TrickAiService } from '@/trickAiService'
 import { Loading } from '@/components/Loading'
 
+const storeClue = ({ clue, attempts }) => {
+  localStorage.setItem('clue', JSON.stringify({ clue, attempts }))
+}
+
 export default function SolvePuzzle() {
+  const guessRef = useRef(null)
   const [clue, setClue] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(null)
-  const [attempts, setAttempts] = useState(0)
-  const guessRef = useRef(null)
+  const [totalAttempts, setTotalAttempts] = useState(1)
 
   const router = useRouter()
 
   useEffectOnce(() => {
-    setLoading(true)
-    TrickAiService.getClue()
-      .then(setClue)
-      .catch(setError)
-      .finally(() => setLoading(false))
+    const storedClue = localStorage.getItem('clue')
+    if (storedClue) {
+      const { clue, attempts } = JSON.parse(storedClue)
+      setClue(clue)
+      setTotalAttempts(attempts + 1)
+      storeClue({ clue, attempts: attempts + 1 })
+    } else {
+      setLoading(true)
+      TrickAiService.getClue()
+        .then(setClue)
+        .catch(setError)
+        .finally(() => setLoading(false))
+    }
   })
 
   const submit = async () => {
     if (!guessRef.current.value) return
 
-    setAttempts(attempts + 1)
+    try {
+      const result = await TrickAiService.submitGuess({
+        guess_text: guessRef.current.value,
+        clue_id: clue.id
+      })
 
-    const result = await TrickAiService.submitGuess({
-      guess_text: guessRef.current.value,
-      clue_id: clue.id
-    })
+      storeClue({ clue, attempts: totalAttempts })
 
-    if (attempts >= 2 || result.success) {
       let url = `/result/solve/${clue.id}/${result.success ? 'success' : 'failure'}`
       if (result.human_pct_correct) {
         url += `?percentage=${result.human_pct_correct}`
       }
       router.push(url)
+
+    } catch (error) {
+      console.error(error)
+      setError(error)
     }
-    setSuccess(result.success)
   }
 
   if (!clue || loading || error) {
