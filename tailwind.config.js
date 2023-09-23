@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,9 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        kumar: ['Kumar One', 'sans-serif'],
-        roboto: ['Roboto', 'sans-serif'],
-        albert: ['Albert Sans', 'sans-serif'],
+        sans: ['Albert Sans', defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         'primary-button': 'radial-gradient(151.38% 103.34% at 32.05% 64.79%, #323232 0%, #000 100%)',

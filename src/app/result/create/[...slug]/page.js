@@ -14,7 +14,7 @@ export default function CreateResult({ params }) {
       <img src={image} />
       <div className="text-center max-w-[400px] mx-auto space-y-12 uppercase py-20">
         <Divider />
-        <div className="flex flex-col space-y-4 items-center text-2xl font-albert">
+        <div className="flex flex-col space-y-4 items-center text-2xl">
           { isSuccess ? <SuccessMessage /> : <FailureMessage /> }
         </div>
         <Divider />

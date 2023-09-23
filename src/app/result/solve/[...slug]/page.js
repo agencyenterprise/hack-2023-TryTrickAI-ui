@@ -56,7 +56,7 @@ export default function SolveResult({ params, searchParams }) {
       <img src={image} />
       <div className="text-center max-w-[400px] mx-auto space-y-12 uppercase py-20">
         <Divider />
-        <div className="flex flex-col space-y-4 items-center text-2xl font-albert">
+        <div className="flex flex-col space-y-4 items-center text-2xl">
           { isSuccess ? <SuccessMessage percentage={percentage} /> : <FailureMessage attempts={totalAttempts} /> }
         </div>
         <Divider />
@@ -93,7 +93,7 @@ function FailureMessage({ attempts }) {
     <>
       <p className="mb-6">Get ahold of yourself and determine your next move</p>
       {
-        hasAttempts && <span className="px-8 py-2 bg-white/60 rounded-3xl font-albert font-medium capitalize text-black text-base">
+        hasAttempts && <span className="px-8 py-2 bg-white/60 rounded-3xl font-medium capitalize text-black text-base">
           { 3 - attempts } Attempts Remaining
         </span>
       }

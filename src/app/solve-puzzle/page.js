@@ -97,7 +97,7 @@ export default function SolvePuzzle() {
                   submit()
                 }
               }}
-              className="rounded-sm py-2 px-3 font-roboto flex-grow"
+              className="rounded-sm py-2 px-3 flex-grow"
               type="text"
               placeholder="Guess"
             />

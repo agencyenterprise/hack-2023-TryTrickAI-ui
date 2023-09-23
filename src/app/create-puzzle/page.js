@@ -76,7 +76,7 @@ export default function CreatePuzzle() {
           <p className="font-light">Describe your code in way that a human can understand and a machine cannot.</p>
           <textarea
             ref={clueRef}
-            className="py-1.5 px-3 font-roboto rounded-sm flex-grow text-sm w-full border border-neutral-50"
+            className="py-1.5 px-3 rounded-sm flex-grow text-sm w-full border border-neutral-50"
             onKeyUp={(e) => {
               e.preventDefault()
               if(e.target.value.trim() === '') return

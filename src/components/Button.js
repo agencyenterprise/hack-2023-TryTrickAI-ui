@@ -6,7 +6,7 @@ export function Button({variant = 'primary', href, onClick, className, children 
     return (
       <Link
         href={href}
-        className={twMerge(`py-2 px-6 drop-shadow rounded uppercase text-white font-roboto shadow-sm font-bold ${
+        className={twMerge(`py-2 px-6 drop-shadow rounded uppercase text-white shadow-sm font-bold ${
           variant === 'primary' ? 'bg-primary-button text-white' : 'border border-white'
         }`, className)}
       >
@@ -17,7 +17,7 @@ export function Button({variant = 'primary', href, onClick, className, children 
 
   return (
     <button
-      className={twMerge(`py-2 px-6 drop-shadow rounded uppercase font-roboto text-white shadow-sm font-bold ${
+      className={twMerge(`py-2 px-6 drop-shadow rounded uppercase text-white shadow-sm font-bold ${
         variant === 'primary' ? 'bg-primary-button text-white' : 'border border-white'
       }`, className)}
       onClick={onClick}
