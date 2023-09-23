@@ -29,7 +29,7 @@ export default function FormDataRequest() {
       <Header />
       <div className="space-y-6 text-black mx-auto">
         <h2 className="text-2xl font-bold uppercase text-center text-white mb-14">You’ll like it. I promise.</h2>
-        <div className="sm:min-w-[448px] space-y-6 px-10 py-8 rounded-sm drop-shadow-white shadow-xl bg-leaderboard-card border border-white/50">
+        <div className="sm:min-w-[448px] space-y-6 px-10 py-8 rounded-sm drop-shadow-white shadow-xl bg-card border border-white/50">
           <Input
             label="Name"
             placeholder="Normal Human Name"

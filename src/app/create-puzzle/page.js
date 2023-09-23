@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useEffect, useState } from "react"
+import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/Button"
@@ -61,7 +61,7 @@ export default function CreatePuzzle() {
     <>
       <Header />
       <section className="max-w-2xl space-y-6 text-black">
-        <div className="bg-zinc-100 rounded-lg space-y-8 text-left p-8">
+        <div className="rounded-sm space-y-8 text-left p-8 bg-card shadow-xl border border-white/50">
           <Divider color="bg-[#292929]" />
           <div className="space-y-4">
             <h3 className="text-2xl font-medium uppercase">Objective</h3>
@@ -71,7 +71,7 @@ export default function CreatePuzzle() {
           </div>
           <Divider color="bg-[#292929]" />
         </div>
-        <div className="flex flex-col bg-zinc-200 rounded-lg p-8 space-y-4">
+        <div className="flex flex-col bg-card rounded-sm p-8 space-y-4 shadow-xl border border-white/50">
           <h2 className="text-2xl font-medium uppercase">Create your clue</h2>
           <p className="font-light">Describe your code in way that a human can understand and a machine cannot.</p>
           <textarea

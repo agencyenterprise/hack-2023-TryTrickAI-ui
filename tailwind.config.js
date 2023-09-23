@@ -15,7 +15,7 @@ module.exports = {
       backgroundImage: {
         'primary-button': 'radial-gradient(151.38% 103.34% at 32.05% 64.79%, #323232 0%, #000 100%)',
         background: 'radial-gradient(151.38% 103.34% at 32.05% 64.79%, #323232 0%, #000 100%)',
-        'leaderboard-card': ' linear-gradient(78deg, rgba(255, 255, 255, 0.12) 1.65%, rgba(255, 255, 255, 0.60) 38.66%, rgba(255, 255, 255, 0.12) 99.08%)',
+        'card': ' linear-gradient(78deg, rgba(255, 255, 255, 0.12) 1.65%, rgba(255, 255, 255, 0.60) 38.66%, rgba(255, 255, 255, 0.12) 99.08%)',
       },
       dropShadow: {
         white: 'drop-shadow(0 1px 2px rgb(256 256 256 / 0.1)) drop-shadow(0 1px 1px rgb(256 256 256 / 0.06));',

@@ -7,6 +7,7 @@ import { Button } from '@/components/Button'
 import { Title } from '@/components/Title'
 import { TrickAiService } from '@/trickAiService'
 import { Loading } from '@/components/Loading'
+import { Divider } from '@/components/Divider'
 
 const storeClue = ({ clue, attempts }) => {
   localStorage.setItem('clue', JSON.stringify({ clue, attempts }))
@@ -75,7 +76,8 @@ export default function SolvePuzzle() {
     <>
       <Header />
       <section className="max-w-2xl space-y-6 text-black">
-        <ul className="bg-zinc-100 rounded-lg space-y-8 text-left p-8">
+        <ul className="rounded-sm space-y-8 text-left p-8 bg-card shadow-xl border border-white/50">
+          <Divider color="bg-[#292929]" />
           <li>
             <h3 className="text-2xl font-medium mb-4 uppercase">Context</h3>
             <p className="font-medium" dangerouslySetInnerHTML={{ __html: normalizeInstruction(clue) }} />
@@ -84,8 +86,9 @@ export default function SolvePuzzle() {
             <h3 className="text-2xl font-medium mb-4 uppercase">Clue</h3>
             <p className="font-medium">{clue.clue_text}</p>
           </li>
+          <Divider color="bg-[#292929]" />
         </ul>
-        <div className="bg-zinc-200 rounded-lg p-8 space-y-4">
+        <div className="rounded-sm p-8 space-y-4  bg-card shadow-xl border border-white/50">
           <div className="flex gap-4">
             <input
               ref={guessRef}
