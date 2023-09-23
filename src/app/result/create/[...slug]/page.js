@@ -21,12 +21,7 @@ export default function CreateResult({ params }) {
         <Divider />
       </div>
       <div className='flex flex-col md:flex-row gap-4 mx-auto mt-20'>
-        <Button href="/solve-puzzle">{isSuccess ? 'Try again' : 'Start over'}</Button>
-        {
-          isSuccess && <Button href="/create-puzzle" variant="secundary">
-            create a puzzle
-          </Button>
-        }
+        <Button href={isSuccess ? '/solve-puzzle' : '/create-puzzle'}>{isSuccess ? 'Solve a puzzle' : 'Start over'}</Button>
       </div>
     </>
   )
