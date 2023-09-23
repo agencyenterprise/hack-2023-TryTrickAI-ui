@@ -5,7 +5,7 @@ async function fetchWrapper(url, options) {
 
   if (!res.ok) {
     const error = await res.json()
-    throw new Error(error.message)
+    throw new Error(error.detail)
   }
 
   return res.json()

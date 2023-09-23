@@ -37,7 +37,7 @@ export default function CreatePuzzle() {
       }
     } catch (error) {
       console.log(error)
-      setError(error)
+      setError(error.message)
     }
     setLoading(false)
   }
@@ -47,7 +47,11 @@ export default function CreatePuzzle() {
       <>
         <Header />
         <div className="text-center space-y-6 mx-auto">
-          { error ? <p className="text-2xl font-medium uppercase">Error: {error}</p> : <Loading /> }
+          {
+            error
+              ? <><p className="text-2xl font-medium uppercase">Ops... seems we have a </p><img src="/bug.webp" /></>
+              : <Loading />
+          }
         </div>
       </>
     )
