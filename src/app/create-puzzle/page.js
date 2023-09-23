@@ -98,10 +98,5 @@ function normalizeInstruction({ instruction, secret }) {
 }
 
 function Header() {
-  return (
-    <div className="text-center space-y-6">
-      <h2 className="text-2xl font-medium uppercase">CREATE A PUZZLE</h2>
-      <Title>Trick AI</Title>
-    </div>
-  )
+  return <img className="mx-auto mt-24 mb-20" src="/createPuzzle.svg" />
 }
