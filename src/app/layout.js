@@ -9,10 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className='bg-background' suppressHydrationWarning>
+      <body className='overflow-y-scroll overflow-x-hidden' suppressHydrationWarning>
         <span className='fixed inset-0 bg-[url(/background.png)] bg-cover bg-center bg-black -z-[11]' />
         <Menu />
-        <main className="grid place-content-center min-h-screen pb-5">
+        <main className="grid place-content-center min-h-screen p-4 md:p-0 pb-5">
           {children}
         </main>
       </body>

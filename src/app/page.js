@@ -20,5 +20,5 @@ export default function Home() {
   )
 }
 function Header() {
-  return <img className="mx-auto mt-24 mb-5 ml-[90px] -mb-[100px]" src="/logo.svg" />
+  return <img className="mx-auto mt-24 ml-[5%] md:ml-[90px] md:-mb-[100px]" src="/logo.svg" />
 }

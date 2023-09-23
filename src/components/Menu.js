@@ -2,18 +2,7 @@
 import Link from "next/link";
 import { Chart, UserGroup, House } from "./icons";
 import { usePathname } from "next/navigation";
-/**
 
-- Home:
-  - Leaderboard
-  - Get our data
-- Create/solve/result puzzle/Get our data
-  - Home
-  - Leaderboard
-- Leaderboard
-  - Home
-  - Get our data
-*/
 const MENU_ITEMS = {
   "/": [
     {
@@ -62,8 +51,8 @@ export function Menu() {
   }
 
   return (
-    <nav className="fixed top-10 left-10">
-      <ul className="flex flex-col gap-4">
+    <nav className="fixed top-5 left-5 md:top-10 md:left-10">
+      <ul className="flex md:flex-col gap-4">
         {
           (menu.map((item) => (
             <MenuLink key={item.href} href={item.href}>
