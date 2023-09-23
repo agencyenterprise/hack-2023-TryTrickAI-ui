@@ -36,4 +36,7 @@ export const TrickAiService = {
       body: JSON.stringify({ guess_text, clue_id })
     })
   },
+  getLeaderboard() {
+    return fetchWrapper(`${BASE_URL}/load-results`)
+  }
 }
