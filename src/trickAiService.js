@@ -38,5 +38,14 @@ export const TrickAiService = {
   },
   getLeaderboard() {
     return fetchWrapper(`${BASE_URL}/load-results`)
+  },
+  getOurData({ name, email, interest }) {
+    return fetchWrapper(`${BASE_URL}/store-researcher-info`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, email, interest })
+    })
   }
 }
