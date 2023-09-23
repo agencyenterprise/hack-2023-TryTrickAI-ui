@@ -15,6 +15,10 @@ export default function RootLayout({ children }) {
         <main className="grid place-content-center min-h-screen p-4 md:p-0 pb-5">
           {children}
         </main>
+        <div class="text-center mb-4" aria-label="Made with love by AE Studio">
+          Made with ❤️ by {' '}
+          <a href="https://ae.studio/" target="_blank" class="ae-studio">AE Studio</a>
+        </div>
       </body>
     </html>
   )
