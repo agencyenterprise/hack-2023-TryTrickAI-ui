@@ -83,7 +83,6 @@ export default function CreatePuzzle() {
                 submit()
               }
             }}
-            placeholder="Autosize height based on content lines"
           />
           <Button className="self-end" onClick={submit}>Submit</Button>
         </div>
