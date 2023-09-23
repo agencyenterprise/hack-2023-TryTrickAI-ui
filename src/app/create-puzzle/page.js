@@ -3,7 +3,6 @@ import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/Button"
-import { Title } from "@/components/Title"
 import { TrickAiService } from "@/trickAiService"
 import useEffectOnce from "@/hooks/effectOnce"
 import { Loading } from "@/components/Loading"

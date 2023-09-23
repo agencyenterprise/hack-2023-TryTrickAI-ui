@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 
 import useEffectOnce from '@/hooks/effectOnce'
 import { Button } from '@/components/Button'
-import { Title } from '@/components/Title'
 import { TrickAiService } from '@/trickAiService'
 import { Loading } from '@/components/Loading'
 import { Divider } from '@/components/Divider'
