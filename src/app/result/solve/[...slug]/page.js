@@ -16,7 +16,7 @@ export default function SolveResult({ params, searchParams }) {
   const router = useRouter()
 
   const isSuccess = result === 'success'
-  const image = isSuccess ? '/success-solve.svg' : '/failure-solve.svg'
+  const image = isSuccess ? '/success-create.svg' : '/failure-solve.svg'
 
   useEffectOnce(() => {
     if (isSuccess) {
