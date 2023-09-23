@@ -103,6 +103,7 @@ export default function SolvePuzzle() {
             />
             <Button onClick={submit}>Submit</Button>
           </div>
+          <p className="font-medium text-[#292929]">Answer is a {clue.secret_type}</p>
         </div>
       </section>
     </>
