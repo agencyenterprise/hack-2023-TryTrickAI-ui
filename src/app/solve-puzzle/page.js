@@ -78,6 +78,7 @@ export default function SolvePuzzle() {
         <ul className="rounded-sm space-y-8 text-left p-8 bg-card shadow-xl border border-white/50">
           <Divider color="bg-[#292929]" />
           <li>
+            <p className="font-medium italic">AI failed to solve this puzzle - good luck!</p><br />
             <h3 className="text-2xl font-medium mb-4 uppercase">Context</h3>
             <p className="font-medium" dangerouslySetInnerHTML={{ __html: normalizeInstruction(clue) }} />
           </li>
