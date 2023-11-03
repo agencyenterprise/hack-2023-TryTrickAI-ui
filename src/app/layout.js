@@ -1,33 +1,41 @@
-import "./globals.css";
 import { Menu } from "@/components/Menu";
-
-export const metadata = {
-  title: "Try Trick AI",
-  description: "Try Trick AI",
-};
+import "./globals.css";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>Try Trick AI</title>
-        <meta name="title" content="Try Trick AI" />
+        <title>Try to Trick AI - Puzzle Game</title>
+        <link rel="icon" type="image/png" href="/icon.png" />
+
+        <meta name="title" content="Try to Trick AI - Puzzle Game" />
         <meta
           name="description"
-          content="Are you able to trick AI? Find out!"
+          content="Are you able to trick AI? Play the puzzles and find out!"
         />
+
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.trytrickai.com/" />
-        <meta property="og:title" content="Try Trick AI" />
+        <meta property="og:title" content="Try to Trick AI - Puzzle Game" />
         <meta
           property="og:description"
-          content="Are you able to trick AI? Find out!"
+          content="Are you able to trick AI? Play the puzzles and find out!"
         />
+        <meta property="og:image" content="https://www.trytrickai.com/og.png" />
+
+        <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.trytrickai.com/" />
-        <meta property="twitter:title" content="Try Trick AI" />
+        <meta
+          property="twitter:title"
+          content="Try to Trick AI - Puzzle Game"
+        />
         <meta
           property="twitter:description"
-          content="Are you able to trick AI? Find out!"
+          content="Are you able to trick AI? Play the puzzles and find out!"
+        />
+        <meta
+          property="twitter:image"
+          content="https://www.trytrickai.com/og.png"
         />
       </head>
       <body
