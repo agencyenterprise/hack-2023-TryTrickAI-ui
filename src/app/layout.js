@@ -6,7 +6,7 @@ import "./globals.css";
 
 export default function RootLayout({ children }) {
   useEffect(() => {
-    posthog.init("phc_rt22ZpqnpUFPaEvoyCkDLEbq2nTeHWVI3M4fLujAIfU", {
+    posthog.init("phc_EH0PW5iaVIPP8ARULJ1rq7fJwtcEIRUle796Q6Ai48D", {
       api_host: "https://app.posthog.com",
     });
   }, []);
