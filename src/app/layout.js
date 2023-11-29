@@ -1,7 +1,14 @@
 import { Menu } from "@/components/Menu";
+import posthog from "posthog-js";
+import { useEffect } from "react";
 import "./globals.css";
 
 export default function RootLayout({ children }) {
+  useEffect(() => {
+    posthog.init("phc_rt22ZpqnpUFPaEvoyCkDLEbq2nTeHWVI3M4fLujAIfU", {
+      api_host: "https://app.posthog.com",
+    });
+  }, []);
   return (
     <html lang="en">
       <head>
