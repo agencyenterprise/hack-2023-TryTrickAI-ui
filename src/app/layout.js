@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
         <div class="text-center my-4" aria-label="Made with love by AE Studio">
           Made with ❤️ by{" "}
           <a
-            href="https://ae.studio?utm_source=https://trytrickai.com/"
+            href="https://ae.studio?utm_source=sds&utm_medium=referral&utm_campaign=trytrickai&utm_content=footer&utm_term=3ff5251a-e107-4d47-bfb8-b2962debd252"
             target="_blank"
             class="ae-studio"
           >
